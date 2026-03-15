@@ -10,13 +10,13 @@ Standard scaled dot-product attention computes token similarity as:
 
 $$\text{score}(Q, K) = \frac{QK^T}{\sqrt{d_k}}$$
 
-The dot product $u \cdot v$ is **symmetric**: $u \cdot v = v \cdot u$. This means attention scores are invariant to the order of $Q$ and $K$, and cannot encode directional or orientational relationships between tokens.
+The dot product $u \cdot v$ is symmetric: $u \cdot v = v \cdot u$. This means attention scores are invariant to the order of $Q$ and $K$, and can't encode directional or orientational relationships between tokens.
 
-The **Clifford geometric product** decomposes as:
+The Clifford geometric product is decomposed as:
 
 $$uv = \underbrace{u \cdot v}_{\text{scalar (symmetric)}} + \underbrace{u \wedge v}_{\text{bivector (antisymmetric)}}$$
 
-The bivector $u \wedge v = -v \wedge u$ encodes the **oriented plane** spanned by $u$ and $v$ — information that the dot product discards entirely. This project asks: does preserving this structure improve learning on geometric tasks?
+The bivector $u \wedge v = -v \wedge u$ encodes the oriented plane spanned by $u$ and $v$ — information that the dot product discards entirely. This project asks: does preserving this structure improve learning on geometric tasks?
 
 ---
 
@@ -125,7 +125,7 @@ python plot_results.py
 
 ---
 
-## Limitations
+## Some Limitations
 
 - No custom CUDA kernel -- 13x slower than standard MHA
 - Orientation win not decisive at this scale
@@ -139,9 +139,3 @@ python plot_results.py
 - Brandstetter et al. (2022). Clifford Neural Layers for PDE Dynamics. ICLR 2023.
 - Ruhe et al. (2023). Clifford Group Equivariant Neural Networks. NeurIPS 2023.
 - Vaswani et al. (2017). Attention Is All You Need. NeurIPS 2017.
-
----
-
-## Author
-
-Freshman ECE Honors student, UT Austin.
